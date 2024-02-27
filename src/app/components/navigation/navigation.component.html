@@ -1,0 +1,20 @@
+<nav class="container navbar navbar-expand-lg bg-primary sticky-top" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="https://www.svgrepo.com/show/530661/genetic-data.svg" alt="" width="30" height="24" class="d-inline-block align-text-top bg-light">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>    
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/home']">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/newuser']" href="/newuser">Nuevo Usuario</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+</nav>

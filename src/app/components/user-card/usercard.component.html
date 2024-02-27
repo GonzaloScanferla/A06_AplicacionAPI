@@ -1,0 +1,11 @@
+<div class="card shadow">
+    <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{currentUser.name}}</h5>
+        <p class="card-text mb-2 "> <span class="text-primary text-emphasis">Age: </span> {{currentUser.age}}</p>
+        <p class="card-text mb-2 text-primary text-emphasis">email: </p> 
+        <p><a class="card-text" [href]="'mailto:' + currentUser.email"> {{currentUser.email}}</a></p>
+        <!-- <p> <span class="card-text mb-2 text-primary text-emphasis">Curso: </span> {{currentStudent.grade}}</p>
+        <a class="btn" [routerLink]="['/students', currentStudent.url]" ><img src="https://www.svgrepo.com/show/499786/add-to.svg" class="btn-plus" alt="More Info"></a> -->
+    </div>
+</div>

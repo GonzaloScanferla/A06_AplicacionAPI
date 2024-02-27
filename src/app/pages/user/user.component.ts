@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-user',
   standalone: true,
   imports: [],
-  templateUrl: './new-user.component.html',
-  styleUrl: './new-user.component.css'
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css'
 })
 export class UserComponent {
 
