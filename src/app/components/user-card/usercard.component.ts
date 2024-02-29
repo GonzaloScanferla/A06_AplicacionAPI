@@ -11,4 +11,9 @@ import { IUser } from '../../interfaces/iuser.interface';
 })
 export class UserCardComponent {
   @Input () currentUser : IUser |any
+
+  deleteUser () {
+    alert ("Seguro que quieres borrar?")
+    // pendiente añadir componente para el mensaje de alerta con botones y eventos personalizados
+  }
 }

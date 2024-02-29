@@ -1,11 +1,20 @@
 <div class="card shadow">
-    <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{currentUser.name}}</h5>
-        <p class="card-text mb-2 "> <span class="text-primary text-emphasis">Age: </span> {{currentUser.age}}</p>
-        <p class="card-text mb-2 text-primary text-emphasis">email: </p> 
-        <p><a class="card-text" [href]="'mailto:' + currentUser.email"> {{currentUser.email}}</a></p>
-        <!-- <p> <span class="card-text mb-2 text-primary text-emphasis">Curso: </span> {{currentStudent.grade}}</p>
-        <a class="btn" [routerLink]="['/students', currentStudent.url]" ><img src="https://www.svgrepo.com/show/499786/add-to.svg" class="btn-plus" alt="More Info"></a> -->
+    <img src="{{currentUser.image}}" class="rounded-circle shadow m-3" alt="...">
+    <div class="card-body p-2 pt-3">
+        <h6 class="card-title fw-bold text-center">{{currentUser.first_name}} {{currentUser.last_name}}</h6>
+        <div class="d-flex justify-content-between p-2">
+            <div class="d-flex flex-column">
+                <img class="icon" [routerLink]="['/users/', currentUser.username]" src="../assets/user-card.svg" alt="">
+                <p class="text-xs">Detalles</p>
+            </div>
+            <div class="d-flex flex-column">
+                <img class="icon" [routerLink]="['/updateuser']" src="../assets/update.svg" alt="">
+                <p class="text-xs">Actualizar</p>
+            </div>
+            <div class="d-flex flex-column">
+                <img class="icon" (click)="deleteUser()" src="../assets/trash.svg" alt="">
+                <p class="text-xs">Eliminar</p>
+            </div>
+        </div>
     </div>
 </div>
