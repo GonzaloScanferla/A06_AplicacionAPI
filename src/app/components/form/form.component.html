@@ -1,1 +1,48 @@
-<p>form works!</p>
+<!-- FOormulario para la inscipción de nuevos alumnos -->
+
+<div class="container   mb-3">
+    <form [formGroup]="inputForm" (ngSubmit)="getDataForm()">
+        <h2>Nuevo Usuario</h2>
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="first_name" formControlName="first_name">
+            <label for="first_name">Nombre</label>
+            @if (checkControl ('first_name','required')) {
+                <p class="error-msg">Campo requerido</p>
+            } 
+            @if (checkControl ('first_name','minlength')){
+                <p class="error-msg">El nombre debe tener por lo menos 3 carácteres</p>
+            }
+        </div>
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="last_name" formControlName="last_name">
+            <label for="last_name">Apellido</label>
+            @if (checkControl ('last_name','required')) {
+                <p class="error-msg">Campo requerido</p>
+            } 
+            @if (checkControl ('last_name','minlength')){
+                <p class="error-msg">El apellido debe tener por lo menos 2 carácteres</p>
+            }
+        </div>
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="email" formControlName="email">
+            <label for="email">Email</label>
+            @if (checkControl ('email','required')) {
+                <p class="error-msg">Campo requerido</p>
+            } 
+            @if (checkControl ('email','pattern')){
+                <p class="error-msg">Información incorrecta</p>
+            }
+        </div>
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="image" formControlName="image">
+            <label for="image">Imagen</label>
+            @if (checkControl ('image','required')) {
+                <p class="error-msg">Campo requerido</p>
+            } 
+        </div>
+        <div class="d-flex gap-sm-2">
+            <input type="submit" class="btn btn-outline-info" value="Enviar" [disabled]="!inputForm.valid">
+        </div>
+    </form>
+</div>
+
