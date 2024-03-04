@@ -16,7 +16,7 @@ export class HomeComponent {
   page : number = 1
   totalPages : number = 1
   isDisabledPrev : boolean = true
-  isDisabledNext : boolean = false
+  isDisabledNext : boolean = true
 
   // Importación con Observables.
   // una vez importados los datos verifico el numero de paginas para activar/desactivar la navegación entre páginas
@@ -25,8 +25,8 @@ export class HomeComponent {
       this.arrUsers = data.results
       this.page = data.page
       this.totalPages = data.total_pages
+      this.isDisabledNext = (this.page === this.totalPages) ? true : false
     } )
-    this.isDisabledNext = (this.page === this.totalPages) ? true : false
   }
   
   
