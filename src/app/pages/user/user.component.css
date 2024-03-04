@@ -1,1 +1,31 @@
 
+.img-wrap {
+    width: 100%;
+}
+img{
+    width: 100%;
+}
+
+.border-m {
+    border-right: 2px solid grey;
+}
+
+.justify {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 576px) {
+    .text-align {
+        text-align: center;
+    }
+
+    .border-m {
+        border-right: none;
+    }
+
+    .justify_btn {
+        justify-content: center;
+    }
+}

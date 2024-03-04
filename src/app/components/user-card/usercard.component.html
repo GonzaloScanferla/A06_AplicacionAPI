@@ -4,7 +4,7 @@
         <h5 class="card-title fw-bold text-center">{{currentUser.first_name}} {{currentUser.last_name}}</h5>
         <div class="d-flex justify-content-around p-2">
             <div class="d-flex flex-column">
-                <img class="icon" [routerLink]="['/users/', currentUser.username]" src="../assets/user-card.svg" alt="">
+                <img class="icon" [routerLink]="['/users/', currentUser._id]" src="../assets/user-card.svg" alt="">
                 <p class="text-xs">Detalles</p>
             </div>
             <div class="d-flex flex-column">

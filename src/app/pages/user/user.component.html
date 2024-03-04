@@ -1,1 +1,16 @@
-
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6 col-lg-4 p-3 border-m">
+        <img class="rounded-circle shadow" src="{{currentUser.image}}" alt="">
+    </div>
+    <div class="col-md-6 col-lg-4 p-3 justify">
+        <h1 class="text-secondary text-align ">{{currentUser.first_name}}</h1>
+        <h1 class="text-secondary text-align">{{currentUser.last_name}}</h1>
+        <p class="text-align"><span class="fw-bold">Nombre usuario: </span>{{currentUser.username}} </p>
+        <p class="text-align"><span class="fw-bold">email: </span>{{currentUser.email}} </p>
+        <div class="d-flex gap-1 justify_btn">
+            <button class="btn btn-outline-secondary"> Eliminar </button>
+            <button class="btn btn-outline-secondary" [routerLink]="['/updateuser']"> Actualizar </button>
+            <button class="btn btn-outline-secondary" [routerLink]="['/home']"> Volver </button>
+        </div>
+    </div>
+</div>

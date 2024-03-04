@@ -12,5 +12,4 @@ export const routes: Routes = [
     { path: 'updateuser', component: UpdateUserComponent },
     { path: 'users/:url', component: UserComponent}, 
     { path: '**', component: Error404Component }
-
 ];

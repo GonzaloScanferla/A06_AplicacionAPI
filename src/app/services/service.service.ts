@@ -13,12 +13,16 @@ export class UsersService {
   // Importo los datos con observables
 
   getAll(page : number): Observable <IUser[]> {
-    return this.HttpClient.get<IUser[]>(`https://peticiones.online/api/users?page=${page}` )
+    return this.HttpClient.get<IUser[]>(`https://peticiones.online/api/users?page=${page}`)
   }
 
   // // Importación con promesas
   // getAllPromises(): Promise<IUser[]> {
   //   return lastValueFrom (this.HttpClient.get<IUser[]>(this.urlBase))
   // }
+
+  getById (id : string): Observable <IUser> {
+    return this.HttpClient.get<IUser>(`https://peticiones.online/api/users/${id}`)
+  }
 
 }
