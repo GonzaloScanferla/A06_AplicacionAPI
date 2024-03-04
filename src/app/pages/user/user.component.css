@@ -29,3 +29,8 @@ img{
         justify-content: center;
     }
 }
+
+img.placeholder {
+    aspect-ratio: 1/1;
+    
+}

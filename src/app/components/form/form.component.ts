@@ -38,16 +38,12 @@ export class FormComponent {
     },[])
   }
 
-  // inicializamos desde BBDD el array con los elementos para el listado del filtro de estudiantes
-  // ngOnInit () {
-    // this.arrGrades = this.studentService.getAllGrades ()
-  // }
 
   // recogemos el input del formulario para realizar el insert en el servicio
   getDataForm () :void {
     // Creo el nombre de usuario como first_name.last_name eliminando espacios
     let username = (this.inputForm.value.first_name + "." + this.inputForm.value.last_name).replace(/\s/g,'').toLowerCase()
-
+    
     // let msg : string = this.usersService.insertNewStudent(this.inputForm.value)
     // alert(msg)
     this.inputForm.reset()

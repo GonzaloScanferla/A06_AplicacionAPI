@@ -15,16 +15,17 @@ export class UserComponent {
   activatedRoute = inject (ActivatedRoute)
   userServices = inject (UsersService)
   currentUser !: IUser 
+  error : boolean = false
 
   ngOnInit ( ) : void {
     this.activatedRoute.params.subscribe ( (params:any) => {
       let currentId = params.url
       this.userServices.getById(currentId).subscribe((data:any) => {
-        if (data!="error") {
-          this.currentUser = data
-          console.log (this.currentUser)
+        if (data.error !== undefined) {
+          this.error = true
         } else {
-          console.log (data.error)
+          this.error = false
+          this.currentUser = data
         }
       })
     })
