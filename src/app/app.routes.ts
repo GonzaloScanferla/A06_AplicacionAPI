@@ -13,6 +13,6 @@ export const routes: Routes = [
         { path: 'users/:url', component: UserComponent}, 
     ] },
     { path: 'newuser', component: NewUserComponent },
-    { path: 'updateuser', component: UpdateUserComponent },
+    { path: 'updateuser/:url', component: UpdateUserComponent },
     { path: '**', component: Error404Component }
 ];
