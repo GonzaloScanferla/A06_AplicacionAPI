@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { IUser } from '../interfaces/iuser.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
+import { IData } from '../interfaces/idata.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class UsersService {
 
   // Importo los datos con observables
 
-  getAll(page : number): Observable <IUser[]> {
-    return this.HttpClient.get<IUser[]>(`https://peticiones.online/api/users?page=${page}`)
+  getAll(page : number): Observable <IData> {
+    return this.HttpClient.get<IData>(`https://peticiones.online/api/users?page=${page}`)
   }
 
   // // Importación con promesas
