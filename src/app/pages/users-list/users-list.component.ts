@@ -33,5 +33,12 @@ export class UsersListComponent {
   //   this.arrUsers = await this.usersServices.getAllPromises()
   // }
 
+  changePage ($event : any) {
+    this.page = ($event.target.value === "next") ? this.page + 1 : this.page - 1
+    this.usersServices.getAll(this.page).subscribe((data: IData) => {
+      this.arrUsers = data.results
+    } )
+  }
+
 }
 

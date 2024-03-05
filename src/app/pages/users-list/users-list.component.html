@@ -9,9 +9,9 @@
     </form>
     <!-- navegación entre páginas -->
     <div class="pages d-flex gap-1">
-        <button class="btn btn-outline-secondary btn-sm" (click)="this.page = this.page-1" [class.disabled]="(this.page == 1)? true: false" value="prev">-</button>
+        <button class="btn btn-outline-secondary btn-sm" (click)="changePage($event)" [class.disabled]="(this.page == 1)? true: false" value="prev">-</button>
         <p class="d-inline-block p-1">{{this.page}} de {{this.totalPages}}</p>
-        <button class="btn btn-outline-secondary btn-sm" (click)="this.page = this.page+1" [class.disabled]="(this.page == this.totalPages)? true : false" value="next">+</button>
+        <button class="btn btn-outline-secondary btn-sm" (click)="changePage($event)" [class.disabled]="(this.page == this.totalPages)? true : false" value="next">+</button>
     </div>
 </div>    
 
