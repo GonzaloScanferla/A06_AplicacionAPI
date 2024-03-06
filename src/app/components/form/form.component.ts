@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../services/service.service';
+import { ActivatedRoute } from '@angular/router';
+import { IUser } from '../../interfaces/iuser.interface';
 
 @Component({
   selector: 'app-form',
@@ -12,14 +14,19 @@ import { UsersService } from '../../services/service.service';
 export class FormComponent {
 
   inputForm : FormGroup
-  usersService = inject (UsersService)
-
+  usersServices = inject (UsersService)
+  activatedRoute = inject (ActivatedRoute)
+  error : boolean = false
+  currentUser !: IUser
 
   constructor () {
 
     // inicialización de los validadores del formulario
     this.inputForm = new FormGroup ({
+      _id: new FormControl (null,[]),
       id: new FormControl (null,[]),
+      username: new FormControl (null,[]),
+      password: new FormControl (null,[]),
       first_name: new FormControl (null,[
         Validators.required,
         Validators.minLength(3)
@@ -55,6 +62,23 @@ export class FormComponent {
     return this.inputForm.get(formControlName)?.hasError(validator) && (this.inputForm.get(formControlName)?.touched)
   }
 
+  ngOnInit () {
+    this.activatedRoute.params.subscribe((params:any) =>{
+      let currentUrl = params.url
+      this.usersServices.getById(currentUrl).subscribe((data:any) => {
+        console.log (data)
+        if (data.error !== undefined) {
+          this.error = true
+        } else {
+          this.error = false
+          this.inputForm.setValue (data)
+        }
+
+      // let response = this.usersService.getById (currentUrl)
+      // console.log (response)
+      })
+    })
+  }
 }
 
 
