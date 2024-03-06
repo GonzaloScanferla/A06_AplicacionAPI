@@ -1,0 +1,34 @@
+<!-- Pagina que enseña el listado de estudiantes en formato card (student-card)-->
+
+<div class="d-flex flex-wrap mb-3 gap-3 search">
+<!-- formulario para buscar usuarios -->
+<!-- PENDIENTE IMPLEMENTAR FUNCIOALIDAD DE FILTRO -->
+    <form class="input-group" novalidate="true" #searchForm="ngForm">
+        <input type="text" class="form-control" placeholder="Filtra por nombre">
+        <input class="btn btn-outline-secondary" type="submit" id="search" value="Search">
+    </form>
+    <!-- navegación entre páginas -->
+    <div class="pages d-flex gap-1">
+        <button class="btn btn-outline-secondary btn-sm" (click)="changePage($event)" [class.disabled]="(this.page == 1)? true: false" value="prev">-</button>
+        <p class="d-inline-block p-1">{{this.page}} de {{this.totalPages}}</p>
+        <button class="btn btn-outline-secondary btn-sm" (click)="changePage($event)" [class.disabled]="(this.page == this.totalPages)? true : false" value="next">+</button>
+    </div>
+</div>    
+
+<!-- cards de usuarios -->
+<div class="row">
+    @for (user of arrUsers; track user._id) {
+        <article class="col col-12 col-md-4 col-lg-3 gap-0 mb-3">
+            <app-user-card [currentUser]="user"></app-user-card>
+        </article>
+    }@empty {
+        @for (i of [1,2,3]; track i ){
+        <article class="col col-12 col-md-4 col-lg-3 gap-0 mb-3">
+            <div class="col col-12 card placeholder-glow">
+                <img src="..." class="rounded-circle shadow m-3 placeholder" alt="...">
+                <h5 class="placeholder-glow"> <span class="placeholder col-8"></span> </h5>
+                <p class="placeholder-glow"> <span class="placeholder col-10"></span> <p>
+                </div>
+        </article>}
+    }
+</div>

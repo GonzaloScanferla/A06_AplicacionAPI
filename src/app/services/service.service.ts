@@ -1,17 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { IUser } from '../interfaces/iuser.interface';
-import { USERS } from '../db/users';
+import { HttpClient } from '@angular/common/http';
+import { Observable, lastValueFrom } from 'rxjs';
+import { IData } from '../interfaces/idata.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private arrUsers : IUser [] = USERS
+  HttpClient = inject(HttpClient)
 
-  constructor() { }
+  // Importo los datos con observables
 
-  getAllUsers () : IUser[] {
-    return this.arrUsers
+  getAll(page : number): Observable <IData> {
+    return this.HttpClient.get<IData>(`https://peticiones.online/api/users?page=${page}`)
   }
+
+  // // Importación con promesas
+  // getAllPromises(): Promise<IUser[]> {
+  //   return lastValueFrom (this.HttpClient.get<IUser[]>(this.urlBase))
+  // }
+
+  getById (id : string): Observable <IUser> {
+    return this.HttpClient.get<IUser>(`https://peticiones.online/api/users/${id}`)
+  }
+
 }
