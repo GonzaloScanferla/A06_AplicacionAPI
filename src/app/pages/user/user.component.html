@@ -23,11 +23,7 @@
             <h1 class="text-secondary text-align">{{currentUser.last_name}}</h1>
             <p class="text-align"><span class="fw-bold">Nombre usuario: </span>{{currentUser.username}} </p>
             <p class="text-align"><span class="fw-bold">email: </span>{{currentUser.email}} </p>
-            <div class="d-flex gap-1 justify_btn">
-                <button class="btn btn-outline-secondary"> Eliminar </button>
-                <button class="btn btn-outline-secondary" [routerLink]="['/updateuser/',currentUser._id]"> Actualizar </button>
-                <button class="btn btn-outline-secondary" [routerLink]="['/home']"> Volver </button>
-            </div>
+            <app-buttons [parent]="'userView'" [currentUserId]="currentUser._id" ></app-buttons>
         </div>
     </div>
 }
