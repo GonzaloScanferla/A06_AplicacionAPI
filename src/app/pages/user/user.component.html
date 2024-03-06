@@ -25,7 +25,7 @@
             <p class="text-align"><span class="fw-bold">email: </span>{{currentUser.email}} </p>
             <div class="d-flex gap-1 justify_btn">
                 <button class="btn btn-outline-secondary"> Eliminar </button>
-                <button class="btn btn-outline-secondary" [routerLink]="['/updateuser/',currentUser.id]"> Actualizar </button>
+                <button class="btn btn-outline-secondary" [routerLink]="['/updateuser/',currentUser._id]"> Actualizar </button>
                 <button class="btn btn-outline-secondary" [routerLink]="['/home']"> Volver </button>
             </div>
         </div>
