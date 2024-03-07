@@ -1,6 +1,6 @@
 
 
-<div class="d-flex justify-content-around p-2">
+<div class="d-flex justify-content-around p-2 pb-0">
     @if (parent == "userCard") {
         <div class="d-flex flex-column">
             <a [routerLink]="['/home/users/', currentUserId]" class="d-flex flex-column">
@@ -16,17 +16,19 @@
             </a>
         </div>
     }
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column ">
         <a [routerLink]="['/updateuser',currentUserId]" class="d-flex flex-column">
             <span class="material-symbols-outlined icon">update</span>
-            <p class="text-xs">Actualizar</p>
+            <p class="text-xs mb-0">Actualizar</p>
         </a>
     </div>
+
     <div class="d-flex flex-column">
-        <a (click)="deleteUser(currentUserId)" class="d-flex flex-column">
+        <a class="d-flex flex-column" data-bs-toggle="modal" [attr.data-bs-target]="'#confirmDeleteModal'+currentUserId">
             <span class="material-symbols-outlined icon">delete</span>
             <p class="text-xs">Eliminar</p>
         </a>
+        <app-delete-modal [currentUserId]="currentUserId" ></app-delete-modal>
     </div>
 </div>
 

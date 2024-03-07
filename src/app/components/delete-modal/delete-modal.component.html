@@ -1,0 +1,21 @@
+<!-- Modal de confirmación de borrado -->
+<div class="modal fade" [id]="'confirmDeleteModal'+currentUserId" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" [id]="'confirmDeleteModalLabel'+currentUserId">¡Cuidado!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Estas a punto de eliminar usuario.</p> 
+                <p>¿Quieres continuar con el borrado?</p> 
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+            <button type="button" class="btn btn-danger" id="liveToastBtn" data-bs-toggle="modal" [attr.data-bs-target]="'#confirmDeleteModal' + currentUserId" (click)="deleteUser(currentUserId)">Borrar</button>            
+        </div>
+    </div>
+</div>
+</div>
+
+

@@ -3,10 +3,10 @@
 <div class="d-flex flex-wrap mb-3 gap-3 search">
 <!-- formulario para buscar usuarios -->
 <!-- PENDIENTE IMPLEMENTAR FUNCIOALIDAD DE FILTRO -->
-    <form class="input-group" novalidate="true" #searchForm="ngForm">
+    <!-- <form class="input-group" novalidate="true" #searchForm="ngForm">
         <input type="text" class="form-control" placeholder="Filtra por nombre">
         <input class="btn btn-outline-secondary" type="submit" id="search" value="Search">
-    </form>
+    </form> -->
     <!-- navegación entre páginas -->
     <div class="pages d-flex gap-1">
         <button class="btn btn-outline-secondary btn-sm" (click)="changePage($event)" [class.disabled]="(this.page == 1)? true: false" value="prev">-</button>
