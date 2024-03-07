@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../services/service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from '../../interfaces/iuser.interface';
 
 @Component({
@@ -13,20 +13,19 @@ import { IUser } from '../../interfaces/iuser.interface';
 })
 export class FormComponent {
 
-  inputForm : FormGroup
   usersServices = inject (UsersService)
   activatedRoute = inject (ActivatedRoute)
+  router = inject (Router)
+
+  inputForm : FormGroup
   error : boolean = false
   currentUser !: IUser
+  newUser !: any
 
   constructor () {
 
     // inicialización de los validadores del formulario
     this.inputForm = new FormGroup ({
-      _id: new FormControl (null,[]),
-      id: new FormControl (null,[]),
-      username: new FormControl (null,[]),
-      password: new FormControl (null,[]),
       first_name: new FormControl (null,[
         Validators.required,
         Validators.minLength(3)
@@ -48,13 +47,25 @@ export class FormComponent {
 
   // recogemos el input del formulario para realizar el insert en el servicio
   getDataForm () :void {
-    // Creo el nombre de usuario como first_name.last_name eliminando espacios
+    // Creo automaticamente el username como first_name.last_name eliminando espacios y en minúsculas
     let username = (this.inputForm.value.first_name + "." + this.inputForm.value.last_name).replace(/\s/g,'').toLowerCase()
-    
-    // let msg : string = this.usersService.insertNewStudent(this.inputForm.value)
-    // alert(msg)
-    this.inputForm.reset()
+
+    // recibo el input del form y añado el username creado automaticamente
+    this.newUser = this.inputForm.value
+    this.newUser ['username'] = username
+
+    this.usersServices.createNewUser(this.newUser).subscribe ((response:any) =>{
+      if (response.id) {
+        alert (`El usuario ${response.first_name} ${response.last_name} se ha añadido correctamente`)
+        // Tras la inserción redirecciono a /home
+        this.router.navigate(['/home'])
+      } else {
+        alert ("Ha habido un problema! \nNo se ha creado el nuevo usuario")
+      }
+    })
   }
+
+
 
   // Función para la validación de los elementos del formulario
 
@@ -62,23 +73,23 @@ export class FormComponent {
     return this.inputForm.get(formControlName)?.hasError(validator) && (this.inputForm.get(formControlName)?.touched)
   }
 
-  ngOnInit () {
-    this.activatedRoute.params.subscribe((params:any) =>{
-      let currentUrl = params.url
-      this.usersServices.getById(currentUrl).subscribe((data:any) => {
-        console.log (data)
-        if (data.error !== undefined) {
-          this.error = true
-        } else {
-          this.error = false
-          this.inputForm.setValue (data)
-        }
+  // ngOnInit () {
+  //   this.activatedRoute.params.subscribe((params:any) =>{
+  //     let currentUrl = params.url
+  //     this.usersServices.getById(currentUrl).subscribe((data:any) => {
+  //       console.log (data)
+  //       if (data.error !== undefined) {
+  //         this.error = true
+  //       } else {
+  //         this.error = false
+  //         this.inputForm.setValue (data)
+  //       }
 
-      // let response = this.usersService.getById (currentUrl)
-      // console.log (response)
-      })
-    })
-  }
+  //     // let response = this.usersService.getById (currentUrl)
+  //     // console.log (response)
+  //     })
+  //   })
+  // }
 }
 
 

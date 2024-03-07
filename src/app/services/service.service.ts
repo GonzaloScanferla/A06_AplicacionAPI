@@ -30,4 +30,9 @@ export class UsersService {
     return this.HttpClient.delete<IUser> (`https://peticiones.online/api/users/${_id}`)
   }
 
+  createNewUser (newUser: IUser) : Observable <IUser> {
+    console.log (newUser)
+    return this.HttpClient.post <IUser> (`https://peticiones.online/api/users`,newUser)
+  }
+
 }

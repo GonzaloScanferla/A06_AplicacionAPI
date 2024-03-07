@@ -1,6 +1,7 @@
-
+<!-- Botonera con enlaces a las diiferentes páginas/funcionalidades de la web -->
 
 <div class="d-flex justify-content-around p-2 pb-0">
+    <!-- En la botonera del user-card enseña el botón "detalles" -->
     @if (parent == "userCard") {
         <div class="d-flex flex-column">
             <a [routerLink]="['/home/users/', currentUserId]" class="d-flex flex-column">
@@ -8,6 +9,7 @@
                 <p class="text-xs">Detalles</p>
             </a>
         </div>
+    <!-- En la botonera del user-view enseña el botón "volver" -->
     } @else if (parent == "userView"){
         <div class="d-flex flex-column">
             <a [routerLink]="['/home']" class="d-flex flex-column">
@@ -28,6 +30,7 @@
             <span class="material-symbols-outlined icon">delete</span>
             <p class="text-xs">Eliminar</p>
         </a>
+        <!-- Eliminar lanza el modal de confirmación de borrado -->
         <app-delete-modal [currentUserId]="currentUserId" ></app-delete-modal>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { UsersService } from '../../services/service.service';
 
 @Component({
@@ -11,7 +11,6 @@ import { UsersService } from '../../services/service.service';
 export class DeleteModalComponent {
 
   @Input () currentUserId: string | any
-  @Output()
 
   usersServices = inject(UsersService)
   error !: boolean 
