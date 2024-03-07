@@ -22,8 +22,17 @@ export class UsersService {
   //   return lastValueFrom (this.HttpClient.get<IUser[]>(this.urlBase))
   // }
 
-  getById (id : string): Observable <IUser> {
-    return this.HttpClient.get<IUser>(`https://peticiones.online/api/users/${id}`)
+  getById (_id : string): Observable <IUser> {
+    return this.HttpClient.get<IUser>(`https://peticiones.online/api/users/${_id}`)
+  }
+
+  deleteUser (_id: string) : Observable <IUser> {
+    return this.HttpClient.delete<IUser> (`https://peticiones.online/api/users/${_id}`)
+  }
+
+  createNewUser (newUser: IUser) : Observable <IUser> {
+    console.log (newUser)
+    return this.HttpClient.post <IUser> (`https://peticiones.online/api/users`,newUser)
   }
 
 }

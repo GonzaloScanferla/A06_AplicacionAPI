@@ -10,9 +10,9 @@ export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' }, 
     { path: 'home', component: HomeComponent, children: [
         { path: '', component: UsersListComponent },
+        { path: 'users/newuser', component: NewUserComponent },
         { path: 'users/:url', component: UserComponent}, 
+        { path: 'users/updateuser/:url', component: UpdateUserComponent },
     ] },
-    { path: 'newuser', component: NewUserComponent },
-    { path: 'updateuser/:url', component: UpdateUserComponent },
     { path: '**', component: Error404Component }
 ];

@@ -1,20 +1,16 @@
 import { Component, Input} from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-buttons',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,DeleteModalComponent],
   templateUrl: './buttons.component.html',
   styleUrl: './buttons.component.css'
 })
 export class ButtonsComponent {
-  @Input() parent : string = ""
-  @Input () currentUserId : string = ""
+  @Input() parent : string | any
+  @Input () currentUserId : string | any
 
-
-  deleteUser (currentUserId : string) {
-    alert ("Seguro que quieres borrar?")
-    // pendiente añadir componente para el mensaje de alerta con botones y eventos personalizados
-  }
 }
