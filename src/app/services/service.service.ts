@@ -10,7 +10,7 @@ import { IData } from '../interfaces/idata.interface';
 export class UsersService {
 
   private httpClient = inject(HttpClient)
-  url = 'https://peticiones.online/api/users'
+  private url = 'https://peticiones.online/api/users'
   // Importo los datos con observables
 
   getAll(page : number): Observable <IData> {
