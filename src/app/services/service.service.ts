@@ -10,11 +10,11 @@ import { IData } from '../interfaces/idata.interface';
 export class UsersService {
 
   HttpClient = inject(HttpClient)
-
+  url = 'https://peticiones.online/api/users'
   // Importo los datos con observables
 
   getAll(page : number): Observable <IData> {
-    return this.HttpClient.get<IData>(`https://peticiones.online/api/users?page=${page}`)
+    return this.HttpClient.get<IData>(`${this.url}?page=${page}`)
   }
 
   // // Importación con promesas
@@ -23,16 +23,19 @@ export class UsersService {
   // }
 
   getById (_id : string): Observable <IUser> {
-    return this.HttpClient.get<IUser>(`https://peticiones.online/api/users/${_id}`)
+    return this.HttpClient.get<IUser>(`${this.url}/${_id}`)
   }
 
   deleteUser (_id: string) : Observable <IUser> {
-    return this.HttpClient.delete<IUser> (`https://peticiones.online/api/users/${_id}`)
+    return this.HttpClient.delete<IUser> (`${this.url}/${_id}`)
   }
 
-  createNewUser (newUser: IUser) : Observable <IUser> {
-    console.log (newUser)
-    return this.HttpClient.post <IUser> (`https://peticiones.online/api/users`,newUser)
+  createNewUser (formValue: IUser) : Observable <IUser> {
+    return this.HttpClient.post <IUser> (`${this.url}`,formValue)
+  }
+
+  updateUser (formValue: IUser) : Observable <IUser> {
+    return this.HttpClient.put <IUser> (`${this.url}/${formValue._id}`,formValue)
   }
 
 }
